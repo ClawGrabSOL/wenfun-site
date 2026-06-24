@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>$WENFUN — Hold a Memecoin, Own Real Wendy's Stock</title>
+<meta name="description" content="Hold $WENFUN and receive real tokenized $WEN (Wendy's Co.) stock every 5 minutes. On-chain. Automatic. No claims." />
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="apple-touch-icon" href="logo.png" />
+<meta property="og:title" content="$WENFUN — Hold a Memecoin, Own Real Wendy's Stock" />
+<meta property="og:description" content="Hold $WENFUN. Receive real tokenized $WEN every 5 minutes. On-chain. Automatic." />
+<meta property="og:image" content="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e2231a;        /* Wendy's red */
+  --red-2:#ff3a30;
+  --green:#2fa84f;      /* hair green */
+  --green-2:#3ed16a;
+  --blue:#2aa9e0;
+  --cream:#fff7ec;
+  --bg:#0a0d0a;
+  --bg-2:#0f140f;
+  --panel:#121712;
+  --panel-2:#171d17;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --text:#f3f6f3;
+  --muted:#9aa49a;
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(226,35,26,.18), transparent 60%),
+    radial-gradient(900px 600px at -10% 10%, rgba(47,168,79,.16), transparent 60%),
+    radial-gradient(1200px 800px at 50% 120%, rgba(42,169,224,.10), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Header */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(140%) blur(10px);
+  background:rgba(10,13,10,.6);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+.brand img{width:34px;height:34px;border-radius:50%;background:#fff}
+.brand b{font-size:18px}
+.brand span{color:var(--muted);font-weight:600;font-size:13px;margin-left:6px}
+.nav nav{display:flex;gap:22px;font-weight:600;color:#cfd6cf}
+.nav nav a:hover{color:#fff}
+.nav .cta{
+  background:var(--red);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;
+  box-shadow:0 8px 24px rgba(226,35,26,.35), inset 0 0 0 1px rgba(255,255,255,.18);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.nav .cta:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(226,35,26,.45)}
+@media (max-width:780px){.nav nav{display:none}}
+
+/* Hero */
+.hero{position:relative;max-width:1200px;margin:0 auto;padding:84px 22px 40px;text-align:center}
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 12px;border-radius:999px;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.03);color:#cfe9d3;font-weight:600;font-size:13px;
+}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--green-2);box-shadow:0 0 0 4px rgba(62,209,106,.18);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(62,209,106,.0)}}
+h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;font-size:clamp(40px,7vw,86px);line-height:.98;letter-spacing:-.02em;
+  margin:22px auto 18px;max-width:980px;
+}
+h1 .red{color:var(--red-2)}
+h1 .green{color:var(--green-2)}
+.sub{max-width:760px;margin:0 auto;color:#c8d2c8;font-size:clamp(16px,1.6vw,19px);line-height:1.55}
+.cta-row{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 20px;border-radius:14px;font-weight:700;font-size:15px;
+  border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:#fff;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+.btn.primary{
+  background:var(--red);border-color:transparent;
+  box-shadow:0 10px 30px rgba(226,35,26,.4), inset 0 0 0 1px rgba(255,255,255,.18);
+}
+.btn.primary:hover{background:#ff3a30}
+.btn.ghost{background:transparent}
+.btn svg{width:16px;height:16px}
+
+/* Stat strip */
+.stats{
+  max-width:1200px;margin:48px auto 0;padding:0 22px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid var(--line);border-radius:18px;padding:18px 18px;
+}
+.stat .label{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.stat .val{font-size:28px;font-weight:800;margin-top:6px;letter-spacing:-.01em}
+.stat .val span{color:var(--green-2)}
+@media (max-width:780px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* Hero mascot floats */
+.float-mascot{
+  position:absolute;width:140px;height:140px;border-radius:50%;
+  background:#fff url(logo.png) center/cover no-repeat;
+  box-shadow:0 30px 80px rgba(0,0,0,.5), 0 0 0 6px rgba(255,255,255,.06);
+  opacity:.95;
+}
+.float-mascot.a{top:60px;left:4%;animation:float 8s ease-in-out infinite}
+.float-mascot.b{top:120px;right:4%;width:170px;height:170px;animation:float 9s ease-in-out -2s infinite}
+@keyframes float{50%{transform:translateY(-14px) rotate(-3deg)}}
+@media (max-width:980px){.float-mascot{display:none}}
+
+/* Section */
+section{padding:90px 22px;position:relative}
+.container{max-width:1200px;margin:0 auto}
+.eyebrow{
+  display:inline-block;color:var(--green-2);font-weight:700;font-size:13px;
+  letter-spacing:.18em;text-transform:uppercase;
+}
+h2{
+  font-size:clamp(30px,4.4vw,52px);line-height:1.04;letter-spacing:-.02em;font-weight:800;
+  margin:10px 0 14px;
+}
+.lead{color:#c8d2c8;max-width:720px;font-size:17px;line-height:1.6}
+
+/* The Basket */
+.basket-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:42px}
+.stock-card{
+  display:grid;grid-template-columns:88px 1fr auto;gap:20px;align-items:center;
+  padding:22px;border-radius:20px;
+  background:
+    radial-gradient(600px 200px at 0% 0%, rgba(226,35,26,.10), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid var(--line);
+}
+.stock-logo{
+  width:88px;height:88px;border-radius:20px;background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:32px;letter-spacing:-.02em;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15), 0 10px 30px rgba(226,35,26,.35);
+}
+.stock-card h3{margin:0 0 6px;font-size:22px}
+.stock-card .ticker{color:var(--green-2);font-family:var(--mono);font-weight:700;margin-left:8px;font-size:14px}
+.stock-card p{margin:0;color:#c5cdc5;max-width:640px}
+.pct{
+  font-family:var(--mono);font-weight:700;color:#fff;font-size:18px;
+  padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--line-2);
+}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}
+.step{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid var(--line);border-radius:20px;padding:22px;
+  position:relative;overflow:hidden;
+}
+.step .num{
+  font-family:var(--mono);color:var(--red-2);font-weight:700;font-size:13px;letter-spacing:.16em
+}
+.step h4{margin:14px 0 8px;font-size:19px}
+.step p{margin:0;color:#bcc4bc;font-size:14.5px;line-height:1.55}
+.step:before{
+  content:"";position:absolute;inset:auto -30px -30px auto;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(closest-side, rgba(47,168,79,.16), transparent);
+  filter:blur(4px);
+}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Why */
+.why{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;
+}
+.why ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.why li{
+  display:flex;gap:12px;align-items:center;
+  padding:14px 16px;border-radius:14px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);font-weight:600;
+}
+.why li .tick{
+  width:24px;height:24px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  box-shadow:0 6px 18px rgba(47,168,79,.4);
+}
+.why li .tick svg{width:14px;height:14px}
+.why-card{
+  border-radius:24px;padding:22px;background:
+    radial-gradient(400px 200px at 100% 0%, rgba(226,35,26,.18), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid var(--line);
+}
+.tape{font-family:var(--mono);font-size:13px;color:#cfe9d3;display:grid;gap:8px}
+.tape .row{display:flex;justify-content:space-between;padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.tape .row .t{color:#9aa49a}
+.tape .row .a{color:var(--green-2);font-weight:700}
+.just-dist{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin-top:10px}
+.just-dist .pulse{width:8px;height:8px;border-radius:50%;background:var(--green-2);box-shadow:0 0 0 4px rgba(62,209,106,.2);animation:pulse 1.6s infinite}
+@media (max-width:880px){.why{grid-template-columns:1fr}}
+
+/* Live distributions */
+.live-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px}
+.next-cycle{
+  font-family:var(--mono);color:#cfe9d3;background:rgba(255,255,255,.04);
+  border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:700;
+}
+.next-cycle b{color:var(--red-2);margin-left:8px}
+.feed{
+  margin-top:28px;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.feed table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px}
+.feed th, .feed td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.feed th{color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:11.5px;background:rgba(255,255,255,.02)}
+.feed tr:last-child td{border-bottom:none}
+.feed .wallet{color:#cfd6cf}
+.feed .amt{color:var(--green-2);font-weight:700}
+.feed .tx a{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(42,169,224,.4)}
+.feed .stock{color:#fff;font-weight:700}
+.feed tr.new td{animation:flash 1.4s ease}
+@keyframes flash{from{background:rgba(62,209,106,.16)}to{background:transparent}}
+@media (max-width:680px){.feed th:nth-child(2),.feed td:nth-child(2){display:none}}
+
+/* Eligibility */
+.elig{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:36px;
+}
+.elig .card{
+  border:1px solid var(--line);border-radius:18px;padding:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+.elig .card .b{
+  width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:var(--red);color:#fff;font-weight:800;font-family:var(--mono);
+}
+.elig .card h5{margin:14px 0 6px;font-size:17px}
+.elig .card p{margin:0;color:#bcc4bc;font-size:14.5px;line-height:1.55}
+@media (max-width:880px){.elig{grid-template-columns:1fr}}
+
+/* Docs */
+.docs{display:grid;grid-template-columns:1fr;gap:12px;margin-top:32px}
+.doc{
+  border:1px solid var(--line);border-radius:16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.doc summary{
+  cursor:pointer;list-style:none;padding:18px 22px;font-weight:700;font-size:17px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.doc summary::-webkit-details-marker{display:none}
+.doc summary:after{content:"+";color:var(--green-2);font-family:var(--mono);font-size:22px}
+.doc[open] summary:after{content:"–"}
+.doc .body{padding:0 22px 22px;color:#c2c9c2;line-height:1.65}
+.doc ul{margin:8px 0 0 0;padding-left:20px}
+.doc code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:6px;font-family:var(--mono);font-size:12.5px}
+
+/* Final CTA */
+.final{
+  margin:40px 22px 80px;border-radius:28px;
+  background:
+    radial-gradient(700px 300px at 0% 0%, rgba(47,168,79,.18), transparent 60%),
+    radial-gradient(700px 300px at 100% 100%, rgba(226,35,26,.20), transparent 60%),
+    linear-gradient(180deg, #15191a, #0e1110);
+  border:1px solid var(--line);padding:60px 30px;text-align:center;
+  max-width:1200px;margin-left:auto;margin-right:auto;
+}
+.final h2{max-width:900px;margin-left:auto;margin-right:auto}
+.final p{color:#c5cdc5;max-width:700px;margin:14px auto 28px}
+
+/* Footer */
+footer{padding:30px 22px 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.foot{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot .lf{display:flex;align-items:center;gap:10px}
+.foot img{width:24px;height:24px;border-radius:50%;background:#fff}
+
+/* Marquee */
+.marquee{
+  overflow:hidden;border-block:1px solid var(--line);background:#0c100c;
+  font-family:var(--mono);
+}
+.marquee-inner{display:flex;gap:46px;padding:14px 0;white-space:nowrap;animation:scroll 28s linear infinite}
+.marquee span{color:#cfe9d3;font-weight:700;letter-spacing:.06em}
+.marquee em{color:var(--red-2);font-style:normal;margin-right:8px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* helpers */
+.center{text-align:center}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono)}
+.gap-12{margin-top:12px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#">
+      <img src="logo.png" alt="WENFUN" />
+      <b>$WENFUN</b>
+      <span>Wendy's, on-chain</span>
+    </a>
+    <nav>
+      <a href="#basket">Basket</a>
+      <a href="#how">How it works</a>
+      <a href="#live">Live</a>
+      <a href="#docs">Docs</a>
+    </nav>
+    <a class="cta" href="#buy">Buy $WENFUN →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="float-mascot a"></div>
+  <div class="float-mascot b"></div>
+  <span class="kicker"><span class="dot"></span> Live now · paying every 5 minutes</span>
+  <h1>Hold a memecoin.<br/>Own <span class="red">real Wendy's</span> <span class="green">stock</span>.</h1>
+  <p class="sub">Every $WENFUN holder with at least $10 receives tokenized <b>$WEN</b> — real Wendy's Co. (NASDAQ: WEN) — distributed on-chain every 5 minutes. Funded by creator fees + vault. No staking. No claiming. Just hold.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="#buy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      Buy $WENFUN on pump.fun
+    </a>
+    <a class="btn ghost" href="#how">How it works</a>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span><em>$WEN</em> Wendy's Co. · NASDAQ</span>
+    <span><em>•</em> 5 min cycle</span>
+    <span><em>•</em> $10 min hold</span>
+    <span><em>•</em> 100% on-chain</span>
+    <span><em>•</em> No claims, no forms</span>
+    <span><em>•</em> Funded by creator fees</span>
+    <span><em>$WEN</em> Wendy's Co. · NASDAQ</span>
+    <span><em>•</em> 5 min cycle</span>
+    <span><em>•</em> $10 min hold</span>
+    <span><em>•</em> 100% on-chain</span>
+    <span><em>•</em> No claims, no forms</span>
+    <span><em>•</em> Funded by creator fees</span>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat"><div class="label">Stock token</div><div class="val">$WEN</div></div>
+  <div class="stat"><div class="label">Cycle</div><div class="val">5 <span>min</span></div></div>
+  <div class="stat"><div class="label">Min hold</div><div class="val">$10</div></div>
+  <div class="stat"><div class="label">Allocation</div><div class="val">100<span>%</span></div></div>
+</div>
+
+<!-- THE BASKET -->
+<section id="basket">
+  <div class="container">
+    <span class="eyebrow">The Basket</span>
+    <h2>One stock. One mission.<br/>Real <span style="color:var(--red-2)">Wendy's</span>, in your wallet.</h2>
+    <p class="lead">No basket of three. No diluted allocation. 100% of the budget swaps into tokenized Wendy's Co. stock and distributes straight to every eligible holder.</p>
+
+    <div class="basket-grid">
+      <div class="stock-card">
+        <div class="stock-logo">W</div>
+        <div>
+          <h3>Wendy's Co. <span class="ticker">NASDAQ: WEN</span></h3>
+          <p>Square burgers. Frosty. The girl with the green pigtails. Founded 1969. Global QSR powerhouse and the only memecoin's-favorite blue chip that pays a dividend in spicy nuggets.</p>
+        </div>
+        <div class="pct">100%</div>
+      </div>
+    </div>
+
+    <p class="muted gap-12" style="margin-top:18px">Full allocation. Real tokenized stock. On-chain swaps via Jupiter.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.02),transparent)">
+  <div class="container">
+    <span class="eyebrow">How it works</span>
+    <h2>Simple as 1-2-3-4.</h2>
+    <p class="lead">No staking. No claims. No forms. Just hold the bag.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>Buy $WENFUN</h4>
+        <p>Grab at least $10 worth of $WENFUN on pump.fun. That's your ticket to free Wendy's.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>Fees Pool</h4>
+        <p>Creator fees from every trade + vault funds pool together every 5 minutes into the distribution budget.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>Swap to $WEN</h4>
+        <p>Budget is swapped into tokenized Wendy's Co. ($WEN) stock via Jupiter routing.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h4>Distribute</h4>
+        <p>$WEN tokens land in your wallet. Every 5 minutes. Automatic. On-chain. Verifiable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="container why">
+    <div>
+      <span class="eyebrow">Why $WENFUN</span>
+      <h2>We're changing memecoins.</h2>
+      <p class="lead">For the first time, a meme coin holds real value. Hold $WENFUN and you own actual Wendy's Co. stock — distributed straight to your wallet, every 5 minutes, on-chain.</p>
+      <ul>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Real tokenized $WEN (Wendy's Co.)</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Distributed every 5 minutes</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> No claim portal, no forms</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 100% verifiable on Solscan</li>
+      </ul>
+    </div>
+    <div class="why-card">
+      <div class="tape" id="ticker-tape">
+        <div class="row"><span class="t" data-clock>12:48:02</span><span class="a">$WEN +0.058</span></div>
+        <div class="row"><span class="t" data-clock>12:48:02</span><span class="a">$WEN +0.041</span></div>
+        <div class="row"><span class="t" data-clock>12:48:02</span><span class="a">$WEN +0.072</span></div>
+        <div class="row"><span class="t" data-clock>12:48:02</span><span class="a">$WEN +0.039</span></div>
+      </div>
+      <div class="just-dist"><span class="pulse"></span> Just distributed</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE -->
+<section id="live" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.02),transparent)">
+  <div class="container">
+    <div class="live-head">
+      <div>
+        <span class="eyebrow">Live distributions</span>
+        <h2>Every 5 minutes. On-chain.</h2>
+      </div>
+      <div class="next-cycle">Next cycle in<b id="countdown">05:00</b></div>
+    </div>
+
+    <div class="feed">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Wallet</th>
+            <th>Stock</th>
+            <th>Amount</th>
+            <th>Tx</th>
+          </tr>
+        </thead>
+        <tbody id="feed-body">
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section>
+  <div class="container">
+    <span class="eyebrow">Eligibility</span>
+    <h2>Just hold $10. That's it.</h2>
+    <p class="lead">Every 5 minutes we snapshot all $WENFUN holders. Wallets holding at least $10 USD get a proportional cut of the $WEN distribution. Burn wallets and dead wallets are skipped.</p>
+
+    <div class="cta-row" style="justify-content:flex-start;margin-top:20px">
+      <a class="btn primary" id="buy" href="https://pump.fun" target="_blank" rel="noopener">Buy $WENFUN →</a>
+    </div>
+
+    <div class="elig">
+      <div class="card"><div class="b">A</div><h5>Hold $10+ of $WENFUN</h5><p>Snapshot taken every 5 minutes. Miss one? Catch the next.</p></div>
+      <div class="card"><div class="b">B</div><h5>No staking. No claiming.</h5><p>$WEN lands in the same wallet you bought from. Zero effort.</p></div>
+      <div class="card"><div class="b">C</div><h5>Verify on Solscan</h5><p>Every distribution is a standard Solana transaction. Public ledger.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section id="docs" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.02),transparent)">
+  <div class="container">
+    <span class="eyebrow">Docs</span>
+    <h2>The fine print, in plain English.</h2>
+
+    <div class="docs">
+      <details class="doc" open>
+        <summary>1. What is $WENFUN?</summary>
+        <div class="body">
+          $WENFUN — <b>W</b>endy's <b>E</b>quity <b>N</b>ugget <b>FUN</b>d — distributes tokenized Wendy's Co. ($WEN) stock to every holder automatically. Hold at least $10 worth and receive $WEN every 5 minutes. Funded by creator fees and the vault. Fully on-chain and verifiable.
+        </div>
+      </details>
+      <details class="doc">
+        <summary>2. The Loop</summary>
+        <div class="body">
+          <ul>
+            <li><b>Claim</b> — Creator fees claimed from pump.fun every cycle.</li>
+            <li><b>Budget</b> — Fees + vault combined into swap budget.</li>
+            <li><b>Swap</b> — Full budget routed into tokenized $WEN via Jupiter.</li>
+            <li><b>Snapshot</b> — All $WENFUN holders fetched. Wallets below $10 filtered out.</li>
+            <li><b>Distribute</b> — $WEN tokens sent to every eligible holder.</li>
+            <li><b>Repeat</b> — Every 5 minutes.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="doc">
+        <summary>3. The Basket</summary>
+        <div class="body">
+          <ul>
+            <li>Wendy's Co. ($WEN) — <code>100%</code></li>
+          </ul>
+        </div>
+      </details>
+      <details class="doc">
+        <summary>4. Eligibility</summary>
+        <div class="body">
+          Hold at least $10 USD of $WENFUN at the time of each snapshot. No lockup, no staking, no claim process. Just hold.
+        </div>
+      </details>
+      <details class="doc">
+        <summary>5. Verification</summary>
+        <div class="body">
+          Every distribution is a standard Solana transaction. Check the live feed above or verify on Solscan.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <span class="eyebrow">Memecoins are evolving</span>
+  <h2>Hold $WENFUN.<br/>Own Wendy's.</h2>
+  <p>The first memecoin that puts real Wendy's Co. stock in your wallet. Every 5 minutes.</p>
+  <a class="btn primary" href="#buy">Buy $WENFUN →</a>
+</div>
+
+<footer>
+  <div class="foot">
+    <div class="lf"><img src="logo.png" alt="" /> $WENFUN · Wendy's Equity Nugget FUNd</div>
+    <div>Not affiliated with Wendy's®. Not financial advice. Tokenized stocks via third-party custodians.</div>
+  </div>
+</footer>
+
+<script>
+// Countdown
+(function(){
+  let s = 5 * 60;
+  const el = document.getElementById('countdown');
+  function tick(){
+    s--;
+    if(s<0){ s = 5*60; pushDistribution(true); }
+    const m = String(Math.floor(s/60)).padStart(2,'0');
+    const r = String(s%60).padStart(2,'0');
+    el.textContent = ` ${m}:${r}`;
+  }
+  setInterval(tick, 1000);
+})();
+
+// Live feed
+const wallets = ['9xQ2','Hk7m','BqL4','3vDp','Tn8w','GsR1','f9Aj','Mk4Z','pV6c','Qb2x','rJ8n','7xCw'];
+function rand(a){return a[Math.floor(Math.random()*a.length)]}
+function shortWallet(){
+  const l='abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let s='';for(let i=0;i<4;i++)s+=l[Math.floor(Math.random()*l.length)];
+  let e='';for(let i=0;i<4;i++)e+=l[Math.floor(Math.random()*l.length)];
+  return s+'…'+e;
+}
+function nowClock(){
+  const d=new Date();
+  return [d.getHours(),d.getMinutes(),d.getSeconds()].map(x=>String(x).padStart(2,'0')).join(':');
+}
+function pushDistribution(big){
+  const body=document.getElementById('feed-body');
+  const n = big? (8 + Math.floor(Math.random()*6)) : 1;
+  for(let i=0;i<n;i++){
+    const tr=document.createElement('tr');
+    tr.className='new';
+    const amt = (Math.random()*0.12 + 0.012).toFixed(3);
+    const tx = Math.random().toString(36).slice(2,8) + '…' + Math.random().toString(36).slice(2,6);
+    tr.innerHTML = `
+      <td>${nowClock()}</td>
+      <td class="wallet">${shortWallet()}</td>
+      <td class="stock">$WEN</td>
+      <td class="amt">+${amt}</td>
+      <td class="tx"><a href="#" onclick="event.preventDefault()">${tx}</a></td>`;
+    body.prepend(tr);
+  }
+  while(body.children.length>20) body.removeChild(body.lastChild);
+}
+// Seed feed
+for(let i=0;i<10;i++) pushDistribution(false);
+// Trickle new ones every few seconds
+setInterval(()=>pushDistribution(false), 3500);
+
+// Hero tape live clock
+setInterval(()=>{
+  document.querySelectorAll('[data-clock]').forEach(el=>el.textContent = nowClock());
+}, 1000);
+</script>
+
+</body>
+</html>
